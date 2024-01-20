@@ -1,7 +1,8 @@
 package dsa.dsa_java.week_6.Stacks;
 public class stackUse {
     public static void main(String[] args) throws stackFullExceptions {
-        StackUsingArray stack = new StackUsingArray(3);
+        // StackUsingArray stack = new StackUsingArray(3);
+        stackUsingLL <Integer> stack = new stackUsingLL<>();
         for(int i = 0 ; i <= 5 ; i++){
             stack.push(i);
         }
