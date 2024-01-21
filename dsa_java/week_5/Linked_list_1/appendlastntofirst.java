@@ -1,3 +1,5 @@
+package dsa.dsa_java.week_5.Linked_list_1;
+
 import java.util.Scanner;
 class Node<T>{
     T data;

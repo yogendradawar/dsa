@@ -3,6 +3,7 @@ package dsa.dsa_java.week_6.Stacks;
 class stackUsingLL<T>{
     private Node<T> head;
     private int size;
+    public int length;
 
     public stackUsingLL(){
         head = null;
@@ -41,5 +42,10 @@ class stackUsingLL<T>{
         size--;
         return data;
      }
+
+    public int peek() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'peek'");
+    }
 
 }
