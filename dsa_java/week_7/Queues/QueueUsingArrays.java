@@ -38,7 +38,8 @@ class QueueUsingArrays{
     void enqueue(int element) throws QueueFullExceptions{
 
         if(size == data.length){
-            throw new QueueFullExceptions();
+            // throw new QueueFullExceptions();
+            doubleCapacity();
         }
         if(size == 0){
             front  = 0;
@@ -52,6 +53,25 @@ class QueueUsingArrays{
         //     rear = 0;
         // }
         data[rear] = element;
+    }
+
+    private void doubleCapacity() {
+        // TODO Auto-generated method stub
+       int temp [] = data;
+       data = new int  [2 * temp.length];
+       int index = 0;
+        for(int i = front ; i < temp.length ; i++){
+            data [index] = temp[i];
+            index++;
+        }
+
+        for(int i = 0 ; i <= front - 1 ; i++){
+            data[index] = temp[i];
+            index++;
+        }
+
+        front = 0;
+        rear = temp.length -1;
     }
 
     int dequeue() throws QueueEmptyExceptions{

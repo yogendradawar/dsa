@@ -1,13 +1,17 @@
 package dsa.dsa_java.week_7.Queues;
 
 import java.util.Scanner;
+// import java.util.Stack;
+import java.util.Stack;
 
 public class QueueUse {
     public static void main(String[] args) throws QueueEmptyExceptions, QueueFullExceptions {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the Queue Size:" + " ");
-        int size = sc.nextInt();
-        QueueUsingArrays queue = new QueueUsingArrays(size);
+        // System.out.print("Enter the Queue Size:" + " ");
+        // int size = sc.nextInt();
+        // QueueUsingArrays queue = new QueueUsingArrays(size);
+        // QueueUsingLL <Integer> queue = new QueueUsingLL<Integer>();
+        stackUsingTwoQueue <Integer> queue= new stackUsingTwoQueue<>();
         int options;
         do {
             System.out.println("1. Get the size , 2. isEmpty 3. front value 4. insert 5. delete 6.EXIT");
@@ -16,7 +20,7 @@ public class QueueUse {
 
             switch (options) {
                 case 1:
-                    System.out.println("size: " + queue.size());
+                    System.out.println("size: " + queue.getSize());
                     break;
                 case 2:
                     System.out.println(queue.isEmpty());
@@ -25,14 +29,14 @@ public class QueueUse {
                     System.out.println("Front: " + queue.front());
                     break;
                 case 4:
-                    if (queue.size() != size) {
+                    // if (queue.size() != size) {
                         System.out.print("Enter the new element to insert: ");
                         int element = sc.nextInt();
                         queue.enqueue(element);
                         System.out.println("Element inserted successfully.");
-                    } else {
-                        System.out.println("Queue is full. Cannot insert more elements.");
-                    }
+                    // } else {
+                    //     System.out.println("Queue is full. Cannot insert more elements.");
+                    // }
                     break;
                 case 5:
                     if (!queue.isEmpty()) {
