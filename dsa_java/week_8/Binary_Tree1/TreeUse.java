@@ -134,15 +134,64 @@ public class TreeUse {
             printAtk(root.children.get(i), k-1);
         }
     }
+
+    public static int leafNode(TreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+
+        if(root.children.size() == 0){
+            return 1;
+        }
+
+        int sum = 0;
+        for(int i = 0 ; i < root.children.size(); i++){
+            sum += leafNode(root.children.get(i));
+        }
+
+        return sum;
+    }
+
+    public static void preOrder(TreeNode<Integer>root){
+        if(root == null){
+            return;
+        }
+
+        System.out.print(root.data + " ");
+        for(int i = 0 ; i < root.children.size() ; i++){
+            preOrder(root.children.get(i));
+        }
+    }
+
+    public static void postOrder(TreeNode<Integer>root){
+        if(root == null){
+            return;
+        }
+        for(int i = 0 ; i < root.children.size() ; i++){
+            postOrder(root.children.get(i));
+        }
+
+            System.out.print(root.data + " ");
+    }
+
+
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // TreeNode<Integer> root = takeInput(sc);
         TreeNode<Integer> root = takeInputLevelWise();
         // print(root);
-        printLevelWise(root);
-        System.out.println("Number of nodes: " + numNodes(root));
-        System.out.println("Largest Node: " + largest(root));
-        System.out.println("Maximum height of tree: " + maxheight(root));
-        printAtk(root, 2);
+        // printLevelWise(root);
+        // System.out.println("Number of nodes: " + numNodes(root));
+        // System.out.println("Largest Node: " + largest(root));
+        // System.out.println("Maximum height of tree: " + maxheight(root));
+        // printAtk(root, 2);
+        // System.out.println("Number of leafNode: " + leafNode(root));
+        System.out.print("PreOrder: ");
+        preOrder(root);
+        System.out.println();
+        System.out.print("PostOrder: ");
+        postOrder(root);
+
     }
 }
