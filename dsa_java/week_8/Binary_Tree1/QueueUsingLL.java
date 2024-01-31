@@ -54,9 +54,4 @@ public class QueueUsingLL<T> {
         size--;
         return temp;
     }
-
-    public void enqueue(int leftChild) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'enqueue'");
-    }
 }
