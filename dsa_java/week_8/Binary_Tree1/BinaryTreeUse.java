@@ -178,6 +178,97 @@ public class BinaryTreeUse  {
     public static void changeToDepthTree(BinaryTreeNode<Integer> root){
         changeToDepthTreeHelper(root,0);
     }
+
+    public static void printNodesWithoutSibling(BinaryTreeNode<Integer>root){
+        if(root == null){
+            return;
+        }
+
+        if(root.left != null && root.right == null){
+            System.out.print(root.left + " ");
+        }
+        else if (root.right != null && root.left == null){
+            System.out.print(root.right +" ");
+        }
+
+        printNodesWithoutSibling(root.left);
+        printNodesWithoutSibling(root.right);
+    }
+
+    public static BinaryTreeNode<Integer> removeLeafNode(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return null;
+        }
+
+        if(root.left == null && root.right == null){
+            return null;
+        }
+
+        root.left = removeLeafNode(root.left);
+        root.right = removeLeafNode(root.right);
+
+        return root;
+    }
+
+    public static void mirrorBinaryTree(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return;
+        }
+
+        mirrorBinaryTree(root.left);
+        mirrorBinaryTree(root.right);
+        BinaryTreeNode<Integer> temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        return;
+    }
+
+    //bad time complexity Worst case:- O(n2), avg case:- O(nlogn)
+    public static boolean isBalanced(BinaryTreeNode<Integer> root){
+
+        if(root == null){
+            return true;
+        }
+
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        if(Math.abs(leftHeight - rightHeight) > 1)
+        return false;
+
+        boolean isLeftBalanced = isBalanced(root.left);
+        boolean isRightBalanced = isBalanced(root.right);
+
+        return isLeftBalanced && isRightBalanced;
+    }
+
+    public static int isBalancedOptimized(BinaryTreeNode<Integer> root){
+        if(root == null)return 0;
+
+        int leftHeight = isBalancedOptimized(root.left);
+        if(leftHeight == -1){
+            return -1;
+        }
+
+        int rightHeight = isBalancedOptimized(root.right);
+        if(rightHeight == -1){
+            return -1;
+        }
+
+        if(Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+        return Math.max(leftHeight, rightHeight) + 1 ;
+
+    }
+
+     //time complexity Worst case:- O(n)
+    public static boolean isBalancedImproved(BinaryTreeNode<Integer>root){
+        return isBalancedOptimized(root) != -1;
+        // if(num == -1){
+        //     return false;
+        // }
+        // return true;
+    }
    public static void main(String[] args) throws QueueEmptyExceptions {
 
      // BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -191,21 +282,41 @@ public class BinaryTreeUse  {
     // BinaryTreeNode<Integer> root = takeInput(sc);
     BinaryTreeNode<Integer> root = takeInputLevelWise();
     // print(root);
-    System.out.println("OUTPUT: ");
-    printLevelWise(root);
-    System.out.println("Sum of Nodes : "+sumOfNodes(root));
-    System.out.print("Pre Order : " );
-    preOrder(root);
-    System.out.println();
-    System.out.print("Post Order: ");
-    postOrder(root);
-    System.out.println();
-    System.out.println("Enter the value of X :");
-    int x = sc.nextInt();
-    System.out.println("Greater Than X nodes are: " + countNodesGreaterThanX(root,x) );
-    System.out.println("Height of BT: " + height(root));
-    changeToDepthTree(root);
-    printLevelWise(root);
+
+    // System.out.println("OUTPUT: ");
+    // printLevelWise(root);
+
+    // System.out.println("Sum of Nodes : "+sumOfNodes(root));
+
+    // System.out.print("Pre Order : " );
+    // preOrder(root);
+    // System.out.println();
+
+    // System.out.print("Post Order: ");
+    // postOrder(root);
+    // System.out.println();
+
+    // System.out.println("Enter the value of X :");
+    // int x = sc.nextInt();
+    // System.out.println("Greater Than X nodes are: " + countNodesGreaterThanX(root,x) );
+
+    // System.out.println("Height of BT: " + height(root));
+    // changeToDepthTree(root);
+
+    // printLevelWise(root);
+    // printNodesWithoutSibling(root);
+
+    // System.out.println("Removed Leaf Nodes - ");
+    // removeLeafNode(root);
+    // printLevelWise(root);
+
+    // System.out.println("Mirror image: ");
+    // mirrorBinaryTree(root);
+
+    //bad time complexity Worst case:- O(n2), avg case:- O(nlogn)
+    // System.out.println("is balanced : " + isBalanced(root));
+
+    System.out.println("is balanced : " + isBalancedImproved(root));
    }
 
 }
