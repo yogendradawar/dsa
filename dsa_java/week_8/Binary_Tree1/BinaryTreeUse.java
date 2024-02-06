@@ -269,6 +269,30 @@ public class BinaryTreeUse  {
         // }
         // return true;
     }
+
+    public static Pair<Integer,Integer> heightDiameter (BinaryTreeNode<Integer> root){
+
+        if(root == null){
+            Pair<Integer,Integer> output = new Pair<>();
+            output.first = 0;
+            output.second = 0;
+            return output;
+        }
+
+        Pair<Integer,Integer> lo = heightDiameter(root.left);
+        Pair<Integer,Integer> ro = heightDiameter(root.right);
+
+        int height = 1 + Math.max(lo.first, ro.first);
+        int option1 = lo.first + ro.first;
+        int option2 = lo.second;
+        int option3 = ro.second;
+        int diameter = Math.max(option1, Math.max(option2, option3));
+        Pair<Integer,Integer> output = new Pair<>();
+        output.first = height;
+        output.second = diameter;
+        return output;
+
+    }
    public static void main(String[] args) throws QueueEmptyExceptions {
 
      // BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -316,7 +340,10 @@ public class BinaryTreeUse  {
     //bad time complexity Worst case:- O(n2), avg case:- O(nlogn)
     // System.out.println("is balanced : " + isBalanced(root));
 
-    System.out.println("is balanced : " + isBalancedImproved(root));
+    // System.out.println("is balanced : " + isBalancedImproved(root));
+
+    System.out.println("Height: " + heightDiameter(root).first);
+    System.out.print("Diameter: " + heightDiameter(root).second);
    }
 
 }
