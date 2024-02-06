@@ -1,4 +1,4 @@
-package dsa.dsa_java.week_7.Queues;
+package dsa.dsa_java.week_8.Binary_Tree1;
 
 public class Node<T> {
     T data;
