@@ -114,7 +114,7 @@ public class min_and_max_binaryTree {
     }
     public static void main(String[] args) throws QueueEmptyExceptions {
         BinaryTreeNode<Integer> root = takeInputLevelWise();
-        System.out.println("Minimum:"+getMinAndMax(root).minimum + 
+        System.out.println("Minimum :"+getMinAndMax(root).minimum + 
         " Maximum:"+getMinAndMax(root).maximum );
     }
 }
