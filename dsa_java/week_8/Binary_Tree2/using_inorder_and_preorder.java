@@ -1,4 +1,4 @@
-package dsa.dsa_java.week_8.Binary_Tree1;
+package dsa.dsa_java.week_8.Binary_Tree2;
 
 import dsa.dsa_java.week_7.Queues.QueueEmptyExceptions;
 
